@@ -54,22 +54,46 @@ void target_panic(int statusCode)
 
 struct PROCESSOR_TCB
 {
-    uint8_t SPLO;
-    uint8_t SPHI;
+	uint8_t STACK_BASE_LO;
+	uint8_t STACK_BASE_HI;
 
-    uint16_t LR;
+	uint8_t R0;
+	uint8_t R1;
+	uint8_t R2;
+	uint8_t R3;
+	uint8_t R4;
+	uint8_t R5;
+	uint8_t R6;
+	uint8_t R7;
+	uint8_t R8;
+	uint8_t R9;
+	uint8_t R10;
+	uint8_t R11;
+	uint8_t R12;
+	uint8_t R13;
+	uint8_t R14;
+	uint8_t R15;
+	uint8_t R16;
+	uint8_t R17;
+	uint8_t R18;
+	uint8_t R19;
+	uint8_t R20;
+	uint8_t R21;
+	uint8_t R22;
+	uint8_t R23;
+	uint8_t R24;
+	uint8_t R25;
+	uint8_t R28;
+	uint8_t R29;
 
-    uint8_t R20;
-    uint8_t R21;
-    uint8_t R22;
-    uint8_t R23;
-    uint8_t R24;
-    uint8_t R25;
+	uint8_t SPLO;
+	uint8_t SPHI;
+	uint16_t LR;
 };
 
 PROCESSOR_WORD_TYPE fiber_initial_stack_base()
 {
-    return RAMEND - 0x02;
+    return RAMEND;
 }
 
 void* tcb_allocate()
@@ -105,18 +129,19 @@ void tcb_configure_sp(void* tcb, PROCESSOR_WORD_TYPE sp)
 void tcb_configure_stack_base(void* tcb, PROCESSOR_WORD_TYPE stack_base)
 {
     PROCESSOR_TCB* tcbPointer = (PROCESSOR_TCB *)tcb;
-    tcbPointer->SPHI = codal::high(stack_base);
-    tcbPointer->SPLO = codal::low(stack_base);
+    tcbPointer->STACK_BASE_HI = codal::high(stack_base);
+    tcbPointer->STACK_BASE_LO = codal::low(stack_base);
 }
 
 PROCESSOR_WORD_TYPE tcb_get_stack_base(void* tcb)
 {
-    return fiber_initial_stack_base();
+    PROCESSOR_TCB* tcbPointer = (PROCESSOR_TCB *)tcb;
+    return tcbPointer->STACK_BASE_HI << 8 | tcbPointer->STACK_BASE_LO;
 }
 
 PROCESSOR_WORD_TYPE get_current_sp()
 {
-    return SPH << 8 | SPL;
+    return (SPH << 8 | SPL) + 2;
 }
 
 PROCESSOR_WORD_TYPE tcb_get_sp(void* tcb)
