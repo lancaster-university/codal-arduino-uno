@@ -171,7 +171,7 @@ extern "C" void __cxa_pure_virtual()
 }
 
 extern PROCESSOR_WORD_TYPE __heap_start;
-PROCESSOR_WORD_TYPE codal_heap_start = (PROCESSOR_WORD_TYPE)&__heap_start - ((PROCESSOR_WORD_TYPE)&__heap_start % (PROCESSOR_WORD_TYPE)DEVICE_HEAP_BLOCK_SIZE) + (PROCESSOR_WORD_TYPE)DEVICE_HEAP_BLOCK_SIZE;
+PROCESSOR_WORD_TYPE codal_heap_start = (PROCESSOR_WORD_TYPE)&__heap_start - ((PROCESSOR_WORD_TYPE)&__heap_start % (PROCESSOR_WORD_TYPE)sizeof(PROCESSOR_WORD_TYPE)) + (PROCESSOR_WORD_TYPE)sizeof(PROCESSOR_WORD_TYPE);
 
 // define new and delete.
 extern "C" void* operator new(size_t objsize) {
