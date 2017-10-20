@@ -33,13 +33,13 @@
     "generate_hex": true, 
     "libraries": [
         {
-            "branch": "1907e80db8fac1ca110388380f59dde859076299", 
+            "branch": "770e165bfd3c46a75cb34aa3f0de978e561ff241", 
             "name": "codal-atmega328p", 
             "type": "git", 
             "url": "https://github.com/lancaster-university/codal-atmega328p"
         }, 
         {
-            "branch": "641d7e124bb4ddb604735183e39c1a09f3c957c5", 
+            "branch": "1f752584b7d6917c22007b0e9d35c10d8e7510bd", 
             "name": "codal-core", 
             "type": "git", 
             "url": "https://github.com/lancaster-university/codal-core"
@@ -48,6 +48,6 @@
     "linker_flags": "-Os -mmcu=atmega328p -Wl,--gc-sections -flto -fuse-linker-plugin -Wl,-flto", 
     "post_process": "python ./utils/uf2conv.py -b 0 -o <OUTPUT_HEX_DESTINATION>/<OUTPUT_HEX_NAME>.uf2 -c <OUTPUT_BIN_LOCATION>", 
     "processor": "ATMEGA328P", 
-    "snapshot_version": "v0.0.1", 
+    "snapshot_version": "v0.1.0", 
     "toolchain": "AVR_GCC"
 }
