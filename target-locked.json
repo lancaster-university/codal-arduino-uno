@@ -39,7 +39,7 @@
             "url": "https://github.com/lancaster-university/codal-atmega328p"
         }, 
         {
-            "branch": "1f752584b7d6917c22007b0e9d35c10d8e7510bd", 
+            "branch": "d7270e90d0b910f803c8d87024d5696bca9ffd41", 
             "name": "codal-core", 
             "type": "git", 
             "url": "https://github.com/lancaster-university/codal-core"
@@ -48,6 +48,6 @@
     "linker_flags": "-Os -mmcu=atmega328p -Wl,--gc-sections -flto -fuse-linker-plugin -Wl,-flto", 
     "post_process": "python ./utils/uf2conv.py -b 0 -o <OUTPUT_HEX_DESTINATION>/<OUTPUT_HEX_NAME>.uf2 -c <OUTPUT_BIN_LOCATION>", 
     "processor": "ATMEGA328P", 
-    "snapshot_version": "v0.1.0", 
+    "snapshot_version": "v0.1.1", 
     "toolchain": "AVR_GCC"
 }
