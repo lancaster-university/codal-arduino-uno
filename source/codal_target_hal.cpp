@@ -122,7 +122,14 @@ PROCESSOR_WORD_TYPE fiber_initial_stack_base()
 
 void* tcb_allocate()
 {
-    return (void *)malloc(sizeof(PROCESSOR_TCB));
+    void* tcb = (void *)malloc(sizeof(PROCESSOR_TCB));
+
+    if(tcb == NULL)
+        return NULL;
+
+    memset(tcb,0,sizeof(PROCESSOR_TCB));
+
+    return tcb;
 }
 
 /**
